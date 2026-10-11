@@ -2,7 +2,7 @@
 
 《从零训一个多模态模型》第 2 集的代码、训练命令、训好的权重与样例。这一集从零训练一只只会「照字画图」的麻雀:输入「红色 小猫」,画出一张 64×64 的红色小猫。
 
-![红色小猫,30 步,引导强度 3](samples/red_cat_30steps_cfg3.png)
+![红色小猫,30 步,引导强度 3](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/red_cat_30steps_cfg3.png)
 
 ## 1. 这一集讲了什么
 
@@ -116,25 +116,25 @@ python ep3_assets.py --ckpt $W/runs/ep02/final.pt --data $W/data --judges $W/jud
 
 | 红色小猫,30 步,引导强度 3 | 6 动物 × 8 颜色 |
 |---|---|
-| ![](samples/red_cat_30steps_cfg3.png) | ![](samples/grid_6x8.png) |
+| ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/red_cat_30steps_cfg3.png) | ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/grid_6x8.png) |
 
 只改步数(同一团噪声,引导强度 3):
 
 | 1 步 | 5 步 | 50 步 |
 |---|---|---|
-| ![](samples/steps_1.png) | ![](samples/steps_5.png) | ![](samples/steps_50.png) |
+| ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/steps_1.png) | ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/steps_5.png) | ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/steps_50.png) |
 
 只改引导强度(同一团噪声,30 步):
 
 | 0 | 3 | 10 |
 |---|---|---|
-| ![](samples/cfg_0.png) | ![](samples/red_cat_30steps_cfg3.png) | ![](samples/cfg_10.png) |
+| ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/cfg_0.png) | ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/red_cat_30steps_cfg3.png) | ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/cfg_10.png) |
 
 训练途中同一团噪声画的红色小猫(2-1):
 
 | 500 轮 | 1000 轮 |
 |---|---|
-| ![](samples/train_0500.png) | ![](samples/train_1000.png) |
+| ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/train_0500.png) | ![](https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master/ep02-t2i/samples/train_1000.png) |
 
 ## 6. 常见问题
 
