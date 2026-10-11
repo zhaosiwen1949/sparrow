@@ -1,48 +1,39 @@
 ---
 license: apache-2.0
-tags: []
-
-#model-type:
-##如 gpt、phi、llama、chatglm、baichuan 等
-#- gpt
-
-#domain:
-##如 nlp、cv、audio、multi-modal
-#- nlp
-
-#language:
-##语言代码列表 https://help.aliyun.com/document_detail/215387.html?spm=a2c4g.11186623.0.0.9f8d7467kni6Aa
-#- cn 
-
-#metrics:
-##如 CIDEr、Blue、ROUGE 等
-#- CIDEr
-
-#tags:
-##各种自定义，包括 pretrained、fine-tuned、instruction-tuned、RL-tuned 等训练方法和其他
-#- pretrained
-
-#tools:
-##如 vllm、fastchat、llamacpp、AdaSeq 等
-#- vllm
+language:
+- zh
+tags:
+- multimodal
+- text-to-image
+- flow-matching
+- from-scratch
+- education
+- toy-model
 ---
-### 当前模型的贡献者未提供更加详细的模型介绍。模型文件和权重，可浏览“模型文件”页面获取。
-#### 您可以通过如下git clone命令，或者ModelScope SDK来下载模型
 
-SDK下载
-```bash
-#安装ModelScope
-pip install modelscope
-```
-```python
-#SDK模型下载
-from modelscope import snapshot_download
-model_dir = snapshot_download('llmzerotohero/sparrow')
-```
-Git下载
-```
-#Git模型下载
-git clone https://www.modelscope.cn/llmzerotohero/sparrow.git
+# 麻雀:从零训一个多模态模型 · 第 2 集(生图)
+
+视频课程《从零训一个多模态模型》第 2 集(生图)的配套代码与训好的权重,内容在 [`ep02-t2i/`](ep02-t2i/)。这一集从零训练一只约 16M 参数、只会「照字画图」的小模型「麻雀」:训练时学从噪声指向答案的方向,画图时从一团噪声出发,一步步顺着方向走,并用文字引导画出「红色 小猫」这样的 64×64 图。
+
+模型仓库:https://modelscope.cn/models/llmzerotohero/sparrow
+
+## 硬件
+
+一块 NVIDIA 显卡,训练显存峰值约 5 GB;要下载的只有 FLUX.2 的图像 VAE,约 0.16 GB。
+
+## 引用
+
+视频:B 站「大模型成长之路」合集《从零训一个多模态模型 | 把技术讲清楚》第 2 集:<第 2 集视频链接>
+
+```bibtex
+@misc{sparrow2026,
+  title        = {从零训一个多模态模型 · 第 2 集 生图},
+  author       = {大模型成长之路},
+  year         = {2026},
+  howpublished = {视频课程,B 站「大模型成长之路」,<第 2 集视频链接>}
+}
 ```
 
-<p style="color: lightgrey;">如果您是本模型的贡献者，我们邀请您根据<a href="https://modelscope.cn/docs/ModelScope%E6%A8%A1%E5%9E%8B%E6%8E%A5%E5%85%A5%E6%B5%81%E7%A8%8B%E6%A6%82%E8%A7%88" style="color: lightgrey; text-decoration: underline;">模型贡献文档</a>，及时完善模型卡片内容。</p>
+## 许可证
+
+代码与权重见 [`LICENSE`](LICENSE)。训练数据全部由程序生成。用到的冻结零件只有 FLUX.2 的图像 VAE,许可证为 Apache-2.0。
