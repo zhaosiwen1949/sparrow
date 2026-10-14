@@ -1,6 +1,7 @@
 """把卡通小世界与 TTS 录音整理成训练用的 npz。
 
   python data.py world <out.npz> <图张数> <视频段数> <起始种子>   # 每条样本的种子 = 起始种子 + 序号
+  python data.py world_hd <out.npz> <图张数> <视频段数> <起始种子>  # 同上,另把 256x256 原图(png)和视频(gif)存进同名文件夹
   python data.py voice <wav 目录> <out.npz>                      # speak.py 的产物 -> 24 kHz、统一 2.08 秒(只补尾部静音)
 
 测试集用另一段种子(见 run.sh),所以测试图一张都没在训练里出现过。
@@ -9,6 +10,7 @@ import json
 import os
 import sys
 import time
+from functools import partial
 from multiprocessing import Pool
 
 import numpy as np
@@ -18,16 +20,20 @@ import world  # noqa: E402
 
 from parts import ACTIONS, ANIMAL_ZH, ANIMALS, COLORS, SR, fit_clip  # noqa: E402
 
-def one_img(seed):
-    s = world.sample(np.random.default_rng(seed))
-    return s["image"], ANIMALS.index(s["animal"]), COLORS.index(s["color"])
+def one_img(seed, hd=False):
+    """hd=True 时在末尾多返回一张 256x256 的原图。"""
+    s = world.sample(np.random.default_rng(seed), hd=hd)
+    r = (s["image"], ANIMALS.index(s["animal"]), COLORS.index(s["color"]))
+    return r + (s["hd"],) if hd else r
 
 
-def one_vid(seed):
+def one_vid(seed, hd=False):
+    """hd=True 时在末尾多返回 256x256 的原帧。"""
     rng = np.random.default_rng(seed)
     action = ACTIONS[rng.integers(len(ACTIONS))]
-    v = world.animate(rng, action)
-    return np.stack(v["frames"]), ANIMALS.index(v["animal"]), COLORS.index(v["color"]), ACTIONS.index(action)
+    v = world.animate(rng, action, hd=hd)
+    r = (np.stack(v["frames"]), ANIMALS.index(v["animal"]), COLORS.index(v["color"]), ACTIONS.index(action))
+    return r + (np.stack(v["hd_frames"]),) if hd else r
 
 
 def make_world(out, n_img, n_vid, seed):
@@ -40,6 +46,29 @@ def make_world(out, n_img, n_vid, seed):
              vid_animal=np.array([r[1] for r in vi]), vid_color=np.array([r[2] for r in vi]),
              vid_action=np.array([r[3] for r in vi]))
     print(f"world {out}: {n_img} 张图 + {n_vid} 段视频,{time.time() - t0:.0f}s,{os.path.getsize(out) / 1e6:.0f} MB")
+
+
+def make_world_hd(out, n_img, n_vid, seed):
+    """和 make_world 一样(npz 里仍是 64x64),另把 256x256 未缩小的原图(png)和视频(gif)存到与 out 同名的文件夹(out.npz -> out/)。"""
+    from PIL import Image
+    t0 = time.time()
+    with Pool(min(96, os.cpu_count())) as pool:
+        im = pool.map(partial(one_img, hd=True), range(seed, seed + n_img), chunksize=32)
+        vi = pool.map(partial(one_vid, hd=True), range(seed + 50_000_000, seed + 50_000_000 + n_vid), chunksize=4)
+    np.savez(out, img=np.stack([r[0] for r in im]), img_animal=np.array([r[1] for r in im]),
+             img_color=np.array([r[2] for r in im]), vid=np.stack([r[0] for r in vi]),
+             vid_animal=np.array([r[1] for r in vi]), vid_color=np.array([r[2] for r in vi]),
+             vid_action=np.array([r[3] for r in vi]))
+    folder = os.path.splitext(out)[0]
+    os.makedirs(folder, exist_ok=True)
+    for i, (_, a, c, img) in enumerate(im):
+        Image.fromarray(img).save(os.path.join(folder, f"img_{i:06d}_{ANIMALS[a]}_{COLORS[c]}.png"))
+    for i, (_, a, c, act, frames) in enumerate(vi):
+        ims = [Image.fromarray(f) for f in frames]
+        ims[0].save(os.path.join(folder, f"vid_{i:06d}_{ANIMALS[a]}_{COLORS[c]}_{ACTIONS[act]}.gif"),
+                    save_all=True, append_images=ims[1:], duration=90, loop=0)
+    print(f"world_hd {out}: {n_img} 张图 + {n_vid} 段视频,{time.time() - t0:.0f}s,{os.path.getsize(out) / 1e6:.0f} MB;"
+          f"png/gif 存在 {folder}/")
 
 
 def make_voice(src, out):
@@ -71,10 +100,12 @@ def make_voice(src, out):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help") or len(sys.argv) < (6 if sys.argv[1] == "world" else 4):
-        print("用法:python data.py world <out.npz> <图张数> <视频段数> <起始种子>  |  python data.py voice <wav 目录> <out.npz>")
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help") or len(sys.argv) < (6 if sys.argv[1] in ("world", "world_hd") else 4):
+        print("用法:python data.py world|world_hd <out.npz> <图张数> <视频段数> <起始种子>  |  python data.py voice <wav 目录> <out.npz>")
         sys.exit(0 if sys.argv[1:2] in (["-h"], ["--help"]) else 2)
     if sys.argv[1] == "world":
         make_world(sys.argv[2], int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]))
+    elif sys.argv[1] == "world_hd":
+        make_world_hd(sys.argv[2], int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]))
     else:
         make_voice(sys.argv[2], sys.argv[3])
