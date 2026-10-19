@@ -24,14 +24,14 @@ tags:
 
 ## 引用
 
-视频:B 站「大模型成长之路」合集《从零训一个多模态模型 | 把技术讲清楚》第 2 集:<第 2 集视频链接>
+视频:B 站「大模型成长之路」合集《从零训一个多模态模型 | 把技术讲清楚》第 2 集:https://www.bilibili.com/video/BV1zDpQ6zE8n
 
 ```bibtex
 @misc{sparrow2026,
   title        = {从零训一个多模态模型 · 第 2 集 生图},
   author       = {大模型成长之路},
   year         = {2026},
-  howpublished = {视频课程,B 站「大模型成长之路」,<第 2 集视频链接>}
+  howpublished = {视频课程,B 站「大模型成长之路」,https://www.bilibili.com/video/BV1zDpQ6zE8n}
 }
 ```
 
