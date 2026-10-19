@@ -1,0 +1,290 @@
+{
+  "code": [
+    {
+      "file": "code/asr.py",
+      "sha256": "b317407ad5933c9a84c9206125691aebd47f17afb4fcf8046cb3264022ad68d1",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/check_voice.py",
+      "sha256": "5f30ac9fe9f756baf7f5910d800389ea0d75d6a2a9effa8a03fb8be3de8b1fb7",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/data.py",
+      "sha256": "3d0a7ac37b9286b57a1d3f4bbf017d2a14a78bb2e3be33b2ecda0dfd07c8a1b6",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/encode.py",
+      "sha256": "58616d84d0f700c16223316517cb86434d45995dbdf5ee8066ba6997065b0dfb",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/ep1_assets.py",
+      "sha256": "4f6ce7b99ca3766cf082ab755b4b2892d92521a2e7319abf2e0a610eb0f7f3fe",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/frozen.py",
+      "sha256": "4feea7865a6329d4ef690da506f5a76bde5fbfca50a0fa4409cfc475501056e8",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/infer.py",
+      "sha256": "f1023090dcf6b120900066a935c9a43378e9937a8374f17ed7843878c8a8c3a4",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/parts.py",
+      "sha256": "980f2cf4853f27153f10523bede6d3fe3017fc5c85b285e0b56daa2c488f889b",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/sparrow.py",
+      "sha256": "40cb6c9111d64135282482ef60a60501c59c5d14882be425eb222acfac2ff837",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/train_judges.py",
+      "sha256": "0306ea1f604529d51bbd2c53410cc5fdc9f26c2db9e7595582f527f677c9e8eb",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/world/world.py",
+      "sha256": "ea65751b6a459c46026bdf29e1f775474846591db27cfe7bca869bcea56eb25a",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/world/README.md",
+      "sha256": "ec6813f368059f1aa3ce48ccf2e7cc8aade3b547c4ce35a27bdf0ddf4b36d781",
+      "source_manifest": "different",
+      "modification": "relative command path"
+    },
+    {
+      "file": "code/voice/fetch.py",
+      "sha256": "cad15d6a8b45bdb9a9f77f1f68b0dbc19af3090c688849a9ab826ed04056f132",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/voice/speak.py",
+      "sha256": "5e8434afd6fd576af58ff03072af9cc74887b39104d7d83af95fd786af55b604",
+      "source_manifest": "match"
+    },
+    {
+      "file": "code/voice/run.sh",
+      "sha256": "f46ec1be4d385a059740e59d4acf5f1a449932bf046837d48e069c7ef5d82873",
+      "source_manifest": "match"
+    }
+  ],
+  "weights": [
+    {
+      "model": "course_ep4",
+      "source_sha256": "3a8a66a77d7afbfe2ee50786bd65da1252d3856c7c06f5eacc0bca235232d7f0",
+      "published_sha256": "2b7dfe25ed142c041bebba02ea112b22cfaf97155917bf89a0c3ce5b647d8d8c",
+      "tensor_equality": "PASS",
+      "tensors": 132,
+      "bytes": 64170028,
+      "report_source_sha256": "57a0c57806e1c046aff634d335ffd3ba7da754078499da76350df59994ca3e79",
+      "report_metrics_unchanged": true
+    },
+    {
+      "model": "course_ep4_only_t2a",
+      "source_sha256": "8f09cdd44eac62493774993245ac03005c6c93ec544c5cdc1414bcbb23833b2a",
+      "published_sha256": "f492e2505180cb4336d2858d094b646d9e459f6e2847c7982d458bd50e6ec52c",
+      "tensor_equality": "PASS",
+      "tensors": 132,
+      "bytes": 64170028,
+      "report_source_sha256": "a1be3f1402850633b1fd9bfec349eac5fe369fadd53c45f44c8952246903542f",
+      "report_metrics_unchanged": true
+    },
+    {
+      "model": "replay_0",
+      "source_sha256": "32def24764adfbc021a2c541d659d2af4496f39c749d4989c996df46e0a17626",
+      "published_sha256": "62b478b2c06d5b11686fe8afbbd40389f965a4a92c76a77c6efe3f71d051279c",
+      "tensor_equality": "PASS",
+      "tensors": 132,
+      "bytes": 64170028,
+      "report_source_sha256": "b0066cdf9b7b5da4b51ba229703cb6af4f3553a12d23a214a57190bc176a5f48",
+      "report_metrics_unchanged": true
+    },
+    {
+      "model": "replay_512",
+      "source_sha256": "4939d6698976db8668d5219a1a1d1c719ba803b39be08c9a191487f12c788d10",
+      "published_sha256": "f24b86d9f963d53697b09b760e82adbd8e2903045312bdfd041fa60deba69140",
+      "tensor_equality": "PASS",
+      "tensors": 132,
+      "bytes": 64170028,
+      "report_source_sha256": "619e90bb4c5c985959fa72ce786da1b29b6f663834a710a8217d716c342b6731",
+      "report_metrics_unchanged": true
+    }
+  ],
+  "samples": [
+    {
+      "file": "samples/course_ep4/gen_t2a_0_小猫.wav",
+      "sha256": "f0d44904d66185c1641f0a62d04e4c09f7cae1ea26f33f9bca9354566a1afb38",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4/gen_t2a_1_小狗.wav",
+      "sha256": "30278501819c5af65c49925bc2aa8a4ef2310f3a1b38095118ab1519d64daead",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4/gen_t2a_2_小兔.wav",
+      "sha256": "86d7b49011d0e0dadf4c05d363ec7086910982aa77f70a05cec0575511868bd5",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4/gen_t2a_3_小鸟.wav",
+      "sha256": "f92330882f5ab460b21f908b3f5dfcbc5896994d8cdc66adfd723e7c9e870748",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4/gen_t2a_4_小鱼.wav",
+      "sha256": "ead8fe24b85f37a9ef41db6d68a891dce4da863e7f295bfb2d9d644a9b5a3583",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4/gen_t2a_5_小熊.wav",
+      "sha256": "b4808cd75a2d8b9be7693f522b08fa83510dddec73addcf2ef3a0715c985d027",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4/gen_t2i_0_红色小猫.png",
+      "sha256": "4f9147eb033bdb17bb9b32e724914b0ec70a9f6d94626388bd3bdf1589d8ec59",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4/gen_t2i_1_蓝色小狗.png",
+      "sha256": "26773176e7ec31cebe80927d226683126c3390310bec2339fd1f12b6efcdd63d",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4_only_t2a/gen_t2a_0_小猫.wav",
+      "sha256": "214cd8fa813328f0a6f7a15a0f744c8c899f402a3c2a02f95cbaa29c0810c6e0",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4_only_t2a/gen_t2a_1_小狗.wav",
+      "sha256": "4b74d6819004104fb55ecb5c88b7ba56293b11a86a18b6b4e3c0157e8de76369",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4_only_t2a/gen_t2a_2_小兔.wav",
+      "sha256": "fa3c98b4062dcb4a7d4b9a75180d5d49acf5528edbea9aa0cb9bfa7172a85798",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4_only_t2a/gen_t2a_3_小鸟.wav",
+      "sha256": "dc997fee2fef9ad1f08be4672fbf3a52bef4be115bbbdd7ae8e622f4fa87f4cb",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4_only_t2a/gen_t2a_4_小鱼.wav",
+      "sha256": "885d12a2dfcb8f7d8dfcd6e093943b4978ef93e4560160b9f9886a57193ea72b",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4_only_t2a/gen_t2a_5_小熊.wav",
+      "sha256": "b38c62d08ffc234dc0a51a6dd9acf17cf0c8e2481375f05490214e506383d537",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4_only_t2a/gen_t2i_0_红色小猫.png",
+      "sha256": "28e6269479210175a7546ef639636a15f610097a42e63fb292afd3c84ea73617",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/course_ep4_only_t2a/gen_t2i_1_蓝色小狗.png",
+      "sha256": "f2e945c3ca6cbc66135018065e46ea8362e3239a8371450c9bec0f15cff776d2",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_0/gen_t2a_0_小猫.wav",
+      "sha256": "e4b53c35449e72a26230d082f1678482ccaee6cbc3e7e2e22b850916df7bfd4c",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_0/gen_t2a_1_小狗.wav",
+      "sha256": "d2efe762527bff5a767fa7eae928de2071daf8c79e3fd148a11b4d098617d2cf",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_0/gen_t2a_2_小兔.wav",
+      "sha256": "75e26cfba91abb487914fb8989cecaea23e3e6417d1a5220f3547c6e6f8da7c8",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_0/gen_t2a_3_小鸟.wav",
+      "sha256": "6b83fcdfc13407cda59bd39a72b85cc29834d48f2d8cca3d73bf7c9954b9a1fb",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_0/gen_t2a_4_小鱼.wav",
+      "sha256": "37d5a5fcf2a48480d153cc3e9ec988f026d611d3e94464ed0beeb00461e1f977",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_0/gen_t2a_5_小熊.wav",
+      "sha256": "394a3393ef290bfd8025983396ef9d320726fa3d74197d961e5e68def8bf8162",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_0/gen_t2i_0_红色小猫.png",
+      "sha256": "84203e4dd1ca1c81123e7af2379824f57db1c0b6f5225ee211fbe0f028b7f948",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_0/gen_t2i_1_蓝色小狗.png",
+      "sha256": "a3a5df25e60e3eadcbbd9dd93fc8d711d75f67376e2c97913cc3766ff19b0fc7",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_512/gen_t2a_0_小猫.wav",
+      "sha256": "aac6fe86e0f2fa070466a5e1e1efc10d73c12ed8c8e08333c76bfcf9e8fd38f3",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_512/gen_t2a_1_小狗.wav",
+      "sha256": "f859d890c432bbef73e9b9486530bf0ef5f248986c328c52c28b6d386857ca68",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_512/gen_t2a_2_小兔.wav",
+      "sha256": "594b0678f690fac1eb55ce0237c852eb89bc0689491f7de48f92f15e385e7b66",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_512/gen_t2a_3_小鸟.wav",
+      "sha256": "51ca453a9bfa8f498616cd6f13bac9bbf5e3a748f1c991cdfdc1a61fdc45fc19",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_512/gen_t2a_4_小鱼.wav",
+      "sha256": "a3808b9fc9cb47b3525bfb1f2bb17d13ec46d6670065f24457737c458c65ce8c",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_512/gen_t2a_5_小熊.wav",
+      "sha256": "39bf805f40dfadc476f30ef92e6c9ee2d597385490b9bd42c7685838236b2709",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_512/gen_t2i_0_红色小猫.png",
+      "sha256": "eeb980e70b3d26afb0ef5504965604d1c06aac091b4cd736b9836de422f70269",
+      "source_hash": "match"
+    },
+    {
+      "file": "samples/replay_512/gen_t2i_1_蓝色小狗.png",
+      "sha256": "4ecf097be9ce0f5bf883d146fcf29f214d6b5816eedb5dc418ed376d42f2fcc4",
+      "source_hash": "match"
+    }
+  ],
+  "data": {
+    "file": "data/voice.npz",
+    "sha256": "e3fb4fcb76cd456db9bfd38aa3ad4287c22a913a085f07a90b0f7be33297a634",
+    "source_hash": "match",
+    "original_arrays_unchanged": true
+  }
+}
