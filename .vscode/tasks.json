@@ -1,0 +1,13 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // ep02-t2i/README.md 第 3 节开头的 mkdir 与第 ② 步:本集不用录音,放一份空的 voice.npz
+            "label": "ep02: 准备工作目录与空 voice.npz",
+            "type": "shell",
+            "options": { "cwd": "${workspaceFolder}/ep02-t2i/code" },
+            "command": "mkdir -p ../work/data ../work/judges ../work/runs && python -c \"import numpy as np; np.savez('../work/data/voice.npz', wav=np.zeros((0, 49920), np.float32), animal=np.zeros(0, np.int64), test=np.zeros(0, bool))\"",
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,128 @@
+{
+    // ep02-t2i/README.md「3. 照着跑」与「4. 本集的对照实验」里的 python 命令
+    // 都在 ep02-t2i/code 下执行,工作目录 W=../work(即 ep02-t2i/work)
+    // 首次运行前先执行任务「ep02: 准备工作目录与空 voice.npz」(对应第 ② 步与 mkdir)
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ep02 ①a 造数据:测试集",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "data.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": ["world", "../work/data/world_test.npz", "2000", "500", "900000000"],
+            "console": "integratedTerminal",
+            "preLaunchTask": "ep02: 准备工作目录与空 voice.npz"
+        },
+        {
+            "name": "ep02 ①b 造数据:训练集",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "data.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": ["world", "../work/data/world_train.npz", "60000", "10000", "0"],
+            "console": "integratedTerminal",
+            "preLaunchTask": "ep02: 准备工作目录与空 voice.npz"
+        },
+        {
+            "name": "ep02 ③a 判卷模型:图",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "train_judges.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": ["img", "--data", "../work/data", "--out", "../work/judges", "--steps", "2000"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep02 ③b 判卷模型:动画",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "train_judges.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": ["vid", "--data", "../work/data", "--out", "../work/judges", "--steps", "1500"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep02 ④ 编码",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "encode.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": ["--data", "../work/data", "--judges", "../work/judges", "--out", "../work/cache", "--parts", "img"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep02 ⑤ 训练",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/ep02",
+                "--tasks", "t2i",
+                "--steps", "4000",
+                "--eval_every", "250"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep02 ⑥ 画图(自己训的权重)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "infer.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": ["../work/runs/ep02/final.pt", "t2i", "${input:ep02Prompt}", "cat.png"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep02 ⑥ 画图(weights/final.pt)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "infer.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": ["../weights/final.pt", "t2i", "${input:ep02Prompt}", "cat.png"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep02 ⑦ 判卷(eval_only)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/ep02",
+                "--tasks", "t2i",
+                "--eval_only"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep02 4 对照实验素材(ep3_assets)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "ep3_assets.py",
+            "cwd": "${workspaceFolder}/ep02-t2i/code",
+            "args": [
+                "--ckpt", "../work/runs/ep02/final.pt",
+                "--data", "../work/data",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/ep02_assets"
+            ],
+            "console": "integratedTerminal"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "ep02Prompt",
+            "type": "promptString",
+            "description": "颜色 + 动物。颜色:红色 橙色 黄色 绿色 蓝色 紫色 粉色 棕色;动物:小猫 小狗 小兔 小鸟 小鱼 小熊",
+            "default": "红色 小猫"
+        }
+    ]
+}
