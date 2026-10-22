@@ -1,0 +1,262 @@
+{
+  "code": [
+    {
+      "file": "code/asr.py",
+      "sha256": "b317407ad5933c9a84c9206125691aebd47f17afb4fcf8046cb3264022ad68d1",
+      "source": "verified training source",
+      "changed": false
+    },
+    {
+      "file": "code/data.py",
+      "sha256": "3d0a7ac37b9286b57a1d3f4bbf017d2a14a78bb2e3be33b2ecda0dfd07c8a1b6",
+      "source": "verified training source",
+      "changed": false
+    },
+    {
+      "file": "code/encode.py",
+      "sha256": "58616d84d0f700c16223316517cb86434d45995dbdf5ee8066ba6997065b0dfb",
+      "source": "verified training source",
+      "changed": false
+    },
+    {
+      "file": "code/frozen.py",
+      "sha256": "4feea7865a6329d4ef690da506f5a76bde5fbfca50a0fa4409cfc475501056e8",
+      "source": "verified training source",
+      "changed": false
+    },
+    {
+      "file": "code/infer.py",
+      "sha256": "f1023090dcf6b120900066a935c9a43378e9937a8374f17ed7843878c8a8c3a4",
+      "source": "verified training source",
+      "changed": false
+    },
+    {
+      "file": "code/parts.py",
+      "sha256": "980f2cf4853f27153f10523bede6d3fe3017fc5c85b285e0b56daa2c488f889b",
+      "source": "verified training source",
+      "changed": false
+    },
+    {
+      "file": "code/sparrow.py",
+      "sha256": "40cb6c9111d64135282482ef60a60501c59c5d14882be425eb222acfac2ff837",
+      "source": "verified training source",
+      "changed": false
+    },
+    {
+      "file": "code/train_judges.py",
+      "sha256": "0306ea1f604529d51bbd2c53410cc5fdc9f26c2db9e7595582f527f677c9e8eb",
+      "source": "verified training source",
+      "changed": false
+    },
+    {
+      "file": "code/world/world.py",
+      "sha256": "ea65751b6a459c46026bdf29e1f775474846591db27cfe7bca869bcea56eb25a",
+      "source": "verified training source",
+      "changed": false
+    }
+  ],
+  "weights": [
+    {
+      "file": "weights/course_ep5/final.pt",
+      "source_sha256": "b7f6efea0fac0a8c8b7dfc337ff03ddf5952d348ee3f9177e7e9f4ce396ce1ae",
+      "published_sha256": "2fdfa161614d2703cfc4b353b047df62bbcdd9d9c65f07cf233013123d41cbae",
+      "bytes": 64203914,
+      "tensor_storage_and_descriptors": "PASS: all 134 tensor descriptors and storage bytes identical",
+      "changed_path_strings": 5,
+      "tensor_map_sha256": "124ed456a245b72170775046e2293f592613610b1a7899de6d4f7406008d381f"
+    },
+    {
+      "file": "weights/course_ep5_frame/final.pt",
+      "source_sha256": "023148634e1a64bf1b1bf0a277a79beaca8aa7b5d367ceba5d0254acd66aae91",
+      "published_sha256": "cd5a9a295e02971b30a5aed38f8adec0fc64c08e67b85318b27956b805a599c7",
+      "bytes": 64203921,
+      "tensor_storage_and_descriptors": "PASS: all 134 tensor descriptors and storage bytes identical",
+      "changed_path_strings": 5,
+      "tensor_map_sha256": "2cd258ca99708f29ebf990a084e072f7d8aa376b9371c56b58dc36a36367a876"
+    }
+  ],
+  "reports": [
+    {
+      "file": "weights/course_ep5/report.json",
+      "source_sha256": "ba2af7d3bec1eceae186b78a044960b194590feea88095a99552b48966acc9fe",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "weights/course_ep5_frame/report.json",
+      "source_sha256": "ba2de5fc143e1a049ac186145fdf852b398bf557cc0686157f22eb17b87275c2",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/attention_full.json",
+      "source_sha256": "dfc9f975a500b31393895d3ec7ffe663fb8e9f34756b7d70c8e4aeaeeffb4fe0",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/attention_frame.json",
+      "source_sha256": "04df17cb4f5cb1d01f7967e1dab148ceb58e2db8fbbbce5dba76071316a667a0",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/representation_wan.json",
+      "source_sha256": "84829b7aa594350e4ea165f6331f2c7b3a22520d33cd3ecc842bb2ac28785128",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/representation_framevae.json",
+      "source_sha256": "f0a40654ec689d807cd55f5dea3179047a917e8f64759f665425531b13006df8",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/final.json",
+      "source_sha256": "002fe7ba65cdf04365b95c3397e46cebc08a5257817f2a4006f23a47f4cadc3f",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step250.json",
+      "source_sha256": "9d91ec17131ed526b710833b3c47dbcf259f60719ffb48718687ca2bc0642ff0",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step500.json",
+      "source_sha256": "6ed38d4a64441826c9d7c1572f7761af56dff2f72f71099d98937e93a93049c2",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step750.json",
+      "source_sha256": "cbca13325df720198af07e904d73288e062f5ca928d18b8fb2e2020539db51e7",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step1000.json",
+      "source_sha256": "7a5344a15e96f48f99729f45291eaa19ec87c64497609a0b8174e6ae1976c686",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step1250.json",
+      "source_sha256": "6cf558076cb8ebf94ee4391ec02c61a8f3ea784606166eb78a6887b3af450462",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step1500.json",
+      "source_sha256": "8e9fd2d135ca21540d8ccd8bdca8d1bbf29ab395b580c7bc6cb93a07b75c37d1",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step1750.json",
+      "source_sha256": "89bd1615d5d388b496b4d4ecee6d1d0bd9a004335b9739b7471a35949299f653",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step2000.json",
+      "source_sha256": "9500927ebf2fa2da5e400b16da3a088a459cb4d0e006d69f097e27fbc3c6fb3a",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step2250.json",
+      "source_sha256": "040d20da54121fe8e569e5cf8e2fb7e443ec95bccaf4df3246a4d3bb784a2968",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step2500.json",
+      "source_sha256": "d63c4c7640fcb82e5f2da2f45ab7e1bbac9b561f6a2dc16e230b88db8a3c0431",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step2750.json",
+      "source_sha256": "2e5141c94e55fc75f8e5a14f3e997c473eecbca9a2b3daaab69e9f6e9d6c2081",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step3000.json",
+      "source_sha256": "14c12ee0ec0ad319e33d41745be96abff485198a70bdf2bbec9aa0afdc5af6a6",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step3250.json",
+      "source_sha256": "f5ef497f9f7e44aa4e952af37bc74d9e8fd435f6618f42d71bfa770972c9c9c8",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step3500.json",
+      "source_sha256": "463832ac569b72fca8b374c2843e772f2fafb7b44fd18a48c3115172c6a8146b",
+      "metrics_and_loss_log_unchanged": true
+    },
+    {
+      "file": "reports/progress/step3750.json",
+      "source_sha256": "e6733a28dcdece1851ee58e1b96323a535c1eb09eda43900c58add41aa9e14a9",
+      "metrics_and_loss_log_unchanged": true
+    }
+  ],
+  "samples": [
+    {
+      "file": "samples/course_ep5/gen_t2v_0_红色小猫向左跑.gif",
+      "source_sha256": "2fb30edde97328b9cd0992a9814d065a7af196354d8b5e5034d4047328872e95",
+      "unmodified": true
+    },
+    {
+      "file": "samples/course_ep5/gen_t2v_1_橙色小狗向右跑.gif",
+      "source_sha256": "afa29b7abef68b10000aa68681e671632318c994e806f88d291b0ce087890f89",
+      "unmodified": true
+    },
+    {
+      "file": "samples/course_ep5/gen_t2v_2_黄色小兔跳.gif",
+      "source_sha256": "c7ccd2ff96a2906e1d7f193c8df2d9a2859eb78aaa1cfca0cea8155188d6595f",
+      "unmodified": true
+    },
+    {
+      "file": "samples/course_ep5/gen_t2v_3_绿色小鸟转身.gif",
+      "source_sha256": "81ddd454939ade00567fb2b15339ef46fa4341d2c184296a2dbc289edf485342",
+      "unmodified": true
+    },
+    {
+      "file": "samples/course_ep5/gen_t2v_4_蓝色小熊向左跑.gif",
+      "source_sha256": "0291919d4c7adc2c99560e37079e04cd8311474be6c2744ba1bb56237b369ddc",
+      "unmodified": true
+    },
+    {
+      "file": "samples/attention_full/gen_t2v_0_红色小猫向左跑.gif",
+      "source_sha256": "974ab3489f2b36188132b7eaf07259e38ad7a7a9962b4f4ad2f62e993399d364",
+      "unmodified": true
+    },
+    {
+      "file": "samples/attention_frame/gen_t2v_0_红色小猫向左跑.gif",
+      "source_sha256": "6a6ae4f0e3bbdb63607a06aa583cdf64e3e4a78647f396dd06f6c967770fe593",
+      "unmodified": true
+    },
+    {
+      "file": "samples/progress/step250.gif",
+      "source_sha256": "05d5506134534f4d596d3ef0d4f62d9367e696b47011b7acd89b458ec94460bd",
+      "unmodified": true
+    },
+    {
+      "file": "samples/progress/step750.gif",
+      "source_sha256": "d142676d7ec6434105507b75eb5d9c578ad9a637700f47c1b9bc17fcf4e9c419",
+      "unmodified": true
+    },
+    {
+      "file": "samples/progress/step4000.gif",
+      "source_sha256": "130dfaacc05638af541e1f7ecb0ac81f25fa6434cd60a8885a11b85d8adf7169",
+      "unmodified": true
+    }
+  ],
+  "previous_episode": {
+    "file": "ep04-t2a/weights/course_ep4/final.pt",
+    "original_sha256": "3a8a66a77d7afbfe2ee50786bd65da1252d3856c7c06f5eacc0bca235232d7f0",
+    "published_sha256": "2b7dfe25ed142c041bebba02ea112b22cfaf97155917bf89a0c3ce5b647d8d8c",
+    "tensor_storage_and_descriptors": "PASS: all 132 tensors identical",
+    "structure": {
+      "dim": 384,
+      "depth": 8,
+      "heads": 6,
+      "aud_split": 4
+    },
+    "maxlen": 400
+  },
+  "notes": [
+    "Paths and experiment labels in checkpoint/report metadata use public relative names.",
+    "Reports retain original checkpoint digests; the weights mapping above links those to the public files.",
+    "Training loss logs are included in report.json under log.",
+    "The progress run has reports and sample animations; its checkpoint is not part of this release.",
+    "All source code files match the current training source. No training or inference was run to prepare this package."
+  ]
+}
