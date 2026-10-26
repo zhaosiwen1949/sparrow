@@ -115,6 +115,198 @@
                 "--out", "../work/runs/ep02_assets"
             ],
             "console": "integratedTerminal"
+        },
+        // ---------------------------------------------------------------------------
+        // ep04-t2a/README.md「2. 照着训练」「3. 用本集参数出样例」与 ep04-t2a/EXPERIMENTS.md 里的 python 命令
+        // 都在 ep04-t2a/code 下执行,工作目录 W=../work(即 ep04-t2a/work),INIT=../../ep02-t2i/weights/final.pt
+        // 首次运行前先执行任务「ep04: 准备工作目录与 voice.npz」(①a 已挂上)
+        // 注意:下面这些文件在本地可能仍是 Git LFS 指针(本机没装 git-lfs),要先从 ModelScope 下载真实文件替换:
+        //   ep04-t2a/data/voice.npz          (①a 的准备任务会复制它)
+        //   ep02-t2i/weights/final.pt        (⑤、4-2、4-3 的 --init)
+        //   ep04-t2a/weights/*/final.pt      (⑥、⑦ 选用的本集参数)
+        // sparrow.py / ep1_assets.py 的 --out 必须是新目录(fresh_out):重跑前先删掉旧的运行目录
+        // ---------------------------------------------------------------------------
+        {
+            "name": "ep04 ①a 造数据:测试集",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "data.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": ["world", "../work/data/world_test.npz", "2000", "500", "900000000"],
+            "console": "integratedTerminal",
+            "preLaunchTask": "ep04: 准备工作目录与 voice.npz"
+        },
+        {
+            "name": "ep04 ①b 造数据:训练集",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "data.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": ["world", "../work/data/world_train.npz", "60000", "10000", "0"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 ③a 判卷模型:图",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "train_judges.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": ["img", "--data", "../work/data", "--out", "../work/judges", "--steps", "2000"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 ③b 判卷模型:动画",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "train_judges.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": ["vid", "--data", "../work/data", "--out", "../work/judges", "--steps", "1500"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 ④ 编码(img,aud)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "encode.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": ["--data", "../work/data", "--judges", "../work/judges", "--out", "../work/cache", "--parts", "img,aud"],
+            "console": "integratedTerminal"
+        },
+        {
+            // 需要真实的 ep02-t2i/weights/final.pt(见顶部 LFS 说明)
+            "name": "ep04 ⑤ 主线训练(course_ep4)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/course_ep4",
+                "--init", "../../ep02-t2i/weights/final.pt",
+                "--tasks", "t2i,t2a",
+                "--steps", "8000",
+                "--seed", "0",
+                "--rng", "legacy",
+                "--eval_every", "1000"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 ⑥ 念名字(t2a)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "infer.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": ["${input:ep04Ckpt}", "t2a", "${input:ep04Animal}", "../work/t2a_${input:ep04Animal}.wav"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 ⑥ 画图(t2i)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "infer.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": ["${input:ep04Ckpt}", "t2i", "${input:ep04Prompt}", "../work/t2i.png"],
+            "console": "integratedTerminal"
+        },
+        {
+            // --out 必须是新目录,不能写进已有的运行目录(如 ../work/runs/course_ep4),所以单独起名 eval_<名字>
+            "name": "ep04 ⑦ 判卷(eval_only)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/eval_${input:ep04EvalName}",
+                "--eval_only",
+                "--ckpt", "${input:ep04Ckpt}"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 4-1 声音表示:Mimi 潜变量",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "ep1_assets.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/audio_latent",
+                "--mod", "aud",
+                "--space", "latent",
+                "--steps", "8000",
+                "--seed", "0",
+                "--rng", "paired"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 4-1 声音表示:直接波形",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "ep1_assets.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/audio_waveform",
+                "--mod", "aud",
+                "--space", "raw",
+                "--steps", "8000",
+                "--seed", "0",
+                "--rng", "paired"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 4-2 只练念名字(replay_0)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/replay_0",
+                "--init", "../../ep02-t2i/weights/final.pt",
+                "--tasks", "t2a",
+                "--eval_tasks", "t2i,t2a",
+                "--steps", "8000",
+                "--seed", "0",
+                "--rng", "paired",
+                "--eval_every", "1000"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep04 4-3 带 N 道画图题(replay_N)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep04-t2a/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/replay_${input:ep04ReplayN}",
+                "--init", "../../ep02-t2i/weights/final.pt",
+                "--tasks", "t2i,t2a",
+                "--bs_task", "t2i=${input:ep04ReplayN}",
+                "--steps", "8000",
+                "--seed", "0",
+                "--rng", "paired",
+                "--eval_every", "1000"
+            ],
+            "console": "integratedTerminal"
         }
     ],
     "inputs": [
@@ -123,6 +315,46 @@
             "type": "promptString",
             "description": "颜色 + 动物。颜色:红色 橙色 黄色 绿色 蓝色 紫色 粉色 棕色;动物:小猫 小狗 小兔 小鸟 小鱼 小熊",
             "default": "红色 小猫"
+        },
+        {
+            "id": "ep04Animal",
+            "type": "pickString",
+            "description": "念哪种动物的名字",
+            "options": ["小猫", "小狗", "小兔", "小鸟", "小鱼", "小熊"],
+            "default": "小猫"
+        },
+        {
+            "id": "ep04Prompt",
+            "type": "promptString",
+            "description": "颜色 + 动物。颜色:红色 橙色 黄色 绿色 蓝色 紫色 粉色 棕色;动物:小猫 小狗 小兔 小鸟 小鱼 小熊",
+            "default": "红色 小猫"
+        },
+        {
+            // ../weights/*/final.pt 在本地可能是 LFS 指针,先从 ModelScope 下载真实文件
+            "id": "ep04Ckpt",
+            "type": "pickString",
+            "description": "用哪份权重(../weights/ 为本集发布参数,../work/runs/course_ep4 为自己训的)",
+            "options": [
+                "../weights/course_ep4/final.pt",
+                "../weights/replay_0/final.pt",
+                "../weights/replay_512/final.pt",
+                "../weights/course_ep4_only_t2a/final.pt",
+                "../work/runs/course_ep4/final.pt"
+            ],
+            "default": "../weights/course_ep4/final.pt"
+        },
+        {
+            "id": "ep04EvalName",
+            "type": "promptString",
+            "description": "⑦ 评测输出目录名,写到 ../work/runs/eval_<这个名字>;须是没用过的新名字",
+            "default": "course_ep4"
+        },
+        {
+            "id": "ep04ReplayN",
+            "type": "pickString",
+            "description": "每轮带几道画图题(念名字题每轮仍为 512 条)",
+            "options": ["10", "26", "51", "128", "256", "512"],
+            "default": "10"
         }
     ]
 }

@@ -8,6 +8,16 @@
             "options": { "cwd": "${workspaceFolder}/ep02-t2i/code" },
             "command": "mkdir -p ../work/data ../work/judges ../work/runs && python -c \"import numpy as np; np.savez('../work/data/voice.npz', wav=np.zeros((0, 49920), np.float32), animal=np.zeros(0, np.int64), test=np.zeros(0, bool))\"",
             "problemMatcher": []
+        },
+        {
+            // ep04-t2a/README.md 第 2 节开头的 mkdir 与 cp:复制已把关的录音包
+            // 注意:ep04-t2a/data/voice.npz 在本地可能仍是 Git LFS 指针(本机没装 git-lfs),
+            // 要先从 ModelScope 下载真实文件替换它,否则这里只会复制一个指针文本
+            "label": "ep04: 准备工作目录与 voice.npz",
+            "type": "shell",
+            "options": { "cwd": "${workspaceFolder}/ep04-t2a/code" },
+            "command": "mkdir -p ../work/data ../work/judges ../work/runs && cp ../data/voice.npz ../work/data/voice.npz",
+            "problemMatcher": []
         }
     ]
 }
