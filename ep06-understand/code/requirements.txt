@@ -1,0 +1,11 @@
+# 在 nvcr.io/nvidia/pytorch:25.09-py3 的 PyTorch 2.9 环境上安装
+numpy==2.1.0
+Pillow==11.3.0
+soundfile==0.13.1
+librosa==0.11.0
+diffusers==0.40.0
+transformers==5.17.0
+accelerate==1.15.0
+huggingface-hub==1.32.0
+funasr==1.4.16
+pypinyin==0.55.0

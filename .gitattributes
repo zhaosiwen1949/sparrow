@@ -72,3 +72,6 @@ saved_model/**/* filter=lfs diff=lfs merge=lfs -text
 "/ep04-t2a/samples/replay_512/gen_t2a_4_\345\260\217\351\261\274.wav" filter=lfs diff=lfs merge=lfs -text
 "/ep04-t2a/samples/replay_512/gen_t2a_5_\345\260\217\347\206\212.wav" filter=lfs diff=lfs merge=lfs -text
 /ep05-t2v/samples/**/*.gif filter=lfs diff=lfs merge=lfs -text
+/ep06-understand/samples/**/*.gif filter=lfs diff=lfs merge=lfs -text
+/ep06-understand/samples/**/*.wav filter=lfs diff=lfs merge=lfs -text
+/ep06-understand/samples/**/*.png filter=lfs diff=lfs merge=lfs -text

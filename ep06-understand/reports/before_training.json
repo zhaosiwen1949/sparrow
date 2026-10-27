@@ -1,0 +1,70 @@
+{
+  "args": {
+    "data": "data",
+    "cache": "cache",
+    "judges": "judges",
+    "out": "runs/course_ep6_untrained",
+    "tasks": [
+      "i2t",
+      "a2t",
+      "v2t"
+    ],
+    "eval_tasks": [
+      "i2t",
+      "a2t",
+      "v2t"
+    ],
+    "init": "init/course_ep5.pt",
+    "steps": 0,
+    "dim": 384,
+    "depth": 8,
+    "heads": 6,
+    "bs": 512,
+    "bs_vid": 128,
+    "lr": 0.0006,
+    "ema": 0.999,
+    "cfg": 3.0,
+    "aud_split": 4,
+    "vid_attn": "full",
+    "weights": {
+      "t2a": 4.0
+    },
+    "eval_every": 0,
+    "eval_only": false
+  },
+  "params_M": 16.04,
+  "seq_len": {
+    "t2i": 68,
+    "t2a": 107,
+    "t2v": 325,
+    "i2t": 22,
+    "a2t": 31,
+    "v2t": 71,
+    "a2i": 94
+  },
+  "load_seconds": 10.7,
+  "train_seconds": 0.0,
+  "log": [],
+  "train_peak_mem_GB": 0.2,
+  "eval": {
+    "i2t": {
+      "n": 2000,
+      "color_acc": 0.05700000375509262,
+      "animal_acc": 0.007000000216066837,
+      "both_acc": 0.0
+    },
+    "a2t": {
+      "n": 108,
+      "animal_acc": 0.0
+    },
+    "v2t": {
+      "n": 500,
+      "color_acc": 0.02200000174343586,
+      "animal_acc": 0.07000000029802322,
+      "action_acc": 0.00800000037997961,
+      "all_acc": 0.0
+    }
+  },
+  "eval_seconds": 1.2,
+  "eval_peak_mem_GB": 0.51
+}

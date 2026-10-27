@@ -1,0 +1,319 @@
+{
+  "description": "仅保留主线实测；路径元数据改为公开相对路径，张量存储字节不变。",
+  "files": [
+    {
+      "file": "code/asr.py",
+      "source": "prototype/asr.py",
+      "source_sha256": "b317407ad5933c9a84c9206125691aebd47f17afb4fcf8046cb3264022ad68d1",
+      "sha256": "b317407ad5933c9a84c9206125691aebd47f17afb4fcf8046cb3264022ad68d1"
+    },
+    {
+      "file": "code/data.py",
+      "source": "prototype/data.py",
+      "source_sha256": "3d0a7ac37b9286b57a1d3f4bbf017d2a14a78bb2e3be33b2ecda0dfd07c8a1b6",
+      "sha256": "3d0a7ac37b9286b57a1d3f4bbf017d2a14a78bb2e3be33b2ecda0dfd07c8a1b6"
+    },
+    {
+      "file": "code/encode.py",
+      "source": "prototype/encode.py",
+      "source_sha256": "58616d84d0f700c16223316517cb86434d45995dbdf5ee8066ba6997065b0dfb",
+      "sha256": "58616d84d0f700c16223316517cb86434d45995dbdf5ee8066ba6997065b0dfb"
+    },
+    {
+      "file": "code/frozen.py",
+      "source": "prototype/frozen.py",
+      "source_sha256": "4feea7865a6329d4ef690da506f5a76bde5fbfca50a0fa4409cfc475501056e8",
+      "sha256": "4feea7865a6329d4ef690da506f5a76bde5fbfca50a0fa4409cfc475501056e8"
+    },
+    {
+      "file": "code/infer.py",
+      "source": "prototype/infer.py",
+      "source_sha256": "f1023090dcf6b120900066a935c9a43378e9937a8374f17ed7843878c8a8c3a4",
+      "sha256": "f1023090dcf6b120900066a935c9a43378e9937a8374f17ed7843878c8a8c3a4"
+    },
+    {
+      "file": "code/parts.py",
+      "source": "prototype/parts.py",
+      "source_sha256": "980f2cf4853f27153f10523bede6d3fe3017fc5c85b285e0b56daa2c488f889b",
+      "sha256": "980f2cf4853f27153f10523bede6d3fe3017fc5c85b285e0b56daa2c488f889b"
+    },
+    {
+      "file": "code/sparrow.py",
+      "source": "prototype/sparrow.py",
+      "source_sha256": "40cb6c9111d64135282482ef60a60501c59c5d14882be425eb222acfac2ff837",
+      "sha256": "40cb6c9111d64135282482ef60a60501c59c5d14882be425eb222acfac2ff837"
+    },
+    {
+      "file": "code/train_judges.py",
+      "source": "prototype/train_judges.py",
+      "source_sha256": "0306ea1f604529d51bbd2c53410cc5fdc9f26c2db9e7595582f527f677c9e8eb",
+      "sha256": "0306ea1f604529d51bbd2c53410cc5fdc9f26c2db9e7595582f527f677c9e8eb"
+    },
+    {
+      "file": "code/world/world.py",
+      "source": "prototype/world/world.py",
+      "source_sha256": "ea65751b6a459c46026bdf29e1f775474846591db27cfe7bca869bcea56eb25a",
+      "sha256": "ea65751b6a459c46026bdf29e1f775474846591db27cfe7bca869bcea56eb25a"
+    },
+    {
+      "file": "code/requirements.txt",
+      "source": "ep05-t2v/code/requirements.txt",
+      "source_sha256": "09151724167d9c3a671198048c8d14b57cf0d5281c605e99d2db6a2dd6688510",
+      "sha256": "09151724167d9c3a671198048c8d14b57cf0d5281c605e99d2db6a2dd6688510"
+    },
+    {
+      "file": "LICENSE",
+      "source": "repository/LICENSE",
+      "source_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "file": "weights/course_ep6/final.pt",
+      "source": "course_ep6/final.pt",
+      "source_sha256": "b03590c6b843c7101a6cd165fd7db1f1a5cfb3d0aaa94750f5c68dbba0f9c8b3",
+      "sha256": "a91e9add8bb85dc06d3631ad958447c9b0baa64d7d029b49c073a2ec43043ccb",
+      "path_fields_replaced": 5
+    },
+    {
+      "file": "weights/course_ep6/report.json",
+      "source": "course_ep6/report.json",
+      "source_sha256": "3b00345777c018468194c5d16077d76f9582fbad5ecc1e2bbfea9469e8f8ab0a",
+      "sha256": "1e5ac1942d0700b7e33d38af5bc4ee8a1787e4a6c18ca44bb54e5c0e7e6890c3",
+      "change": "仅替换路径字段"
+    },
+    {
+      "file": "reports/before_training.json",
+      "source": "course_ep6_untrained/report.json",
+      "source_sha256": "c8d1fa91ce7009ebe24faf74de9e2c771c4a29e81f5dd9417d6398198d97ebaf",
+      "sha256": "6ffa673c7bc5fe0b6e9e0cab02a3dc38564bfd0b424457ec0578948f0e4ee4c7",
+      "change": "仅替换路径字段"
+    },
+    {
+      "file": "reports/train.jsonl",
+      "source": "course_ep6/train.log",
+      "source_sha256": "50a0dbeb09ba2eda5d44035fc5800e1b2d719b4963ee187ae9f4ad132c64198c",
+      "sha256": "ce4c619df36ff71c129d433e86f5baa98d65a6ae671dc2d7cd1453e60be057b6",
+      "change": "仅提取与报告 log 逐项相等的训练 JSON 行"
+    },
+    {
+      "file": "samples/course_ep6/a2t_0_模型说小兔.wav",
+      "source": "course_ep6/samples/a2t_0_模型说小兔.wav",
+      "source_sha256": "354191fc645e855e0917827f544d29cd2a91432d2eef24dbdb004b0aba02c9bd",
+      "sha256": "354191fc645e855e0917827f544d29cd2a91432d2eef24dbdb004b0aba02c9bd"
+    },
+    {
+      "file": "samples/course_ep6/a2t_1_模型说小熊.wav",
+      "source": "course_ep6/samples/a2t_1_模型说小熊.wav",
+      "source_sha256": "285d8b5186c3ff3d8240b2f81c0d3bad7e32be76d6ef7e92640364c2f0e33dc5",
+      "sha256": "285d8b5186c3ff3d8240b2f81c0d3bad7e32be76d6ef7e92640364c2f0e33dc5"
+    },
+    {
+      "file": "samples/course_ep6/a2t_2_模型说小狗.wav",
+      "source": "course_ep6/samples/a2t_2_模型说小狗.wav",
+      "source_sha256": "b468270536a888250a862f5e4da863f2020af90fc497de7f6e0388e50a2bd3dc",
+      "sha256": "b468270536a888250a862f5e4da863f2020af90fc497de7f6e0388e50a2bd3dc"
+    },
+    {
+      "file": "samples/course_ep6/a2t_3_模型说小猫.wav",
+      "source": "course_ep6/samples/a2t_3_模型说小猫.wav",
+      "source_sha256": "af3be0287d5766502b02bb7c04648ce1f32c0ce874c149b8ae697d19bd6067e0",
+      "sha256": "af3be0287d5766502b02bb7c04648ce1f32c0ce874c149b8ae697d19bd6067e0"
+    },
+    {
+      "file": "samples/course_ep6/a2t_4_模型说小鱼.wav",
+      "source": "course_ep6/samples/a2t_4_模型说小鱼.wav",
+      "source_sha256": "8522e746702a35a8bc9ce8ffe6c26762e6e05635ab892339224d31c49822efd4",
+      "sha256": "8522e746702a35a8bc9ce8ffe6c26762e6e05635ab892339224d31c49822efd4"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2a_0_小猫.wav",
+      "source": "course_ep6/samples/gen_t2a_0_小猫.wav",
+      "source_sha256": "56a4b6d54d1edcf807d0e804b3ebaf5298a60eedbd8207d60b75097c26efc7a1",
+      "sha256": "56a4b6d54d1edcf807d0e804b3ebaf5298a60eedbd8207d60b75097c26efc7a1"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2a_1_小狗.wav",
+      "source": "course_ep6/samples/gen_t2a_1_小狗.wav",
+      "source_sha256": "61f0b4d4df7839facf9ceba49c0e6e608e6715e198d3bd03daaa9ba40f92670a",
+      "sha256": "61f0b4d4df7839facf9ceba49c0e6e608e6715e198d3bd03daaa9ba40f92670a"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2a_2_小兔.wav",
+      "source": "course_ep6/samples/gen_t2a_2_小兔.wav",
+      "source_sha256": "86ff1532feffabb36b7bace8fc3c53260d1364532b1423e14dc3f69c8d1af39a",
+      "sha256": "86ff1532feffabb36b7bace8fc3c53260d1364532b1423e14dc3f69c8d1af39a"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2a_3_小鸟.wav",
+      "source": "course_ep6/samples/gen_t2a_3_小鸟.wav",
+      "source_sha256": "372c6d01114998919235309d347446f7089d45d647882f03260f3a63ee9f09ac",
+      "sha256": "372c6d01114998919235309d347446f7089d45d647882f03260f3a63ee9f09ac"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2a_4_小鱼.wav",
+      "source": "course_ep6/samples/gen_t2a_4_小鱼.wav",
+      "source_sha256": "21b611bc6ff9c00963ed550c26e95e25225d437a04275e95668acbf32ea0d08c",
+      "sha256": "21b611bc6ff9c00963ed550c26e95e25225d437a04275e95668acbf32ea0d08c"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2a_5_小熊.wav",
+      "source": "course_ep6/samples/gen_t2a_5_小熊.wav",
+      "source_sha256": "c4d360b56cc789f058210d72361e0a3b15cc7dc6c741ddeb2ed2f766e918d50b",
+      "sha256": "c4d360b56cc789f058210d72361e0a3b15cc7dc6c741ddeb2ed2f766e918d50b"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2i_0_红色小猫.png",
+      "source": "course_ep6/samples/gen_t2i_0_红色小猫.png",
+      "source_sha256": "cfaf2d194a09ecda3f681fbd1c5e09941daea689eb9e8fee8f14e4b2bc109064",
+      "sha256": "cfaf2d194a09ecda3f681fbd1c5e09941daea689eb9e8fee8f14e4b2bc109064"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2i_1_蓝色小狗.png",
+      "source": "course_ep6/samples/gen_t2i_1_蓝色小狗.png",
+      "source_sha256": "3c49fd73ec62ed010f049cbdc4cb9a0a1f2557ef9d5e9f7e9c0c44667e3ff6ae",
+      "sha256": "3c49fd73ec62ed010f049cbdc4cb9a0a1f2557ef9d5e9f7e9c0c44667e3ff6ae"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2i_2_粉色小兔.png",
+      "source": "course_ep6/samples/gen_t2i_2_粉色小兔.png",
+      "source_sha256": "93a499f68bb515f7c29f0970b39f26d5ddbf751c893caeb20b6e02ec1ae921aa",
+      "sha256": "93a499f68bb515f7c29f0970b39f26d5ddbf751c893caeb20b6e02ec1ae921aa"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2i_3_黄色小鸟.png",
+      "source": "course_ep6/samples/gen_t2i_3_黄色小鸟.png",
+      "source_sha256": "7082249944cefb6423135dbbb660b98694a5ef1b3e1c966dc25d7f499125bdfe",
+      "sha256": "7082249944cefb6423135dbbb660b98694a5ef1b3e1c966dc25d7f499125bdfe"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2i_4_紫色小鱼.png",
+      "source": "course_ep6/samples/gen_t2i_4_紫色小鱼.png",
+      "source_sha256": "407525d25f80943625ca110e626de3a6856338a8544c131e1a767593c1d50324",
+      "sha256": "407525d25f80943625ca110e626de3a6856338a8544c131e1a767593c1d50324"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2i_grid.png",
+      "source": "course_ep6/samples/gen_t2i_grid.png",
+      "source_sha256": "d8335e0b07db9f5e9c9a93f72fde22addfc41d79ee9e5d8528e05a954c6601d5",
+      "sha256": "d8335e0b07db9f5e9c9a93f72fde22addfc41d79ee9e5d8528e05a954c6601d5"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2v_0_红色小猫向左跑.gif",
+      "source": "course_ep6/samples/gen_t2v_0_红色小猫向左跑.gif",
+      "source_sha256": "264a20e56897aa908caa12b511dcbd2ab4b1cbd8ae14f7ef05efdfa60a71683b",
+      "sha256": "264a20e56897aa908caa12b511dcbd2ab4b1cbd8ae14f7ef05efdfa60a71683b"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2v_1_橙色小狗向右跑.gif",
+      "source": "course_ep6/samples/gen_t2v_1_橙色小狗向右跑.gif",
+      "source_sha256": "491dee32ad0983b0ac26ff671d8bb821a14f9174cc25fe298cd78553c1aaf71f",
+      "sha256": "491dee32ad0983b0ac26ff671d8bb821a14f9174cc25fe298cd78553c1aaf71f"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2v_2_黄色小兔跳.gif",
+      "source": "course_ep6/samples/gen_t2v_2_黄色小兔跳.gif",
+      "source_sha256": "b7fe767b651cde27dcece01663dacc7d224996b36f5d791ae1963ce9b610a112",
+      "sha256": "b7fe767b651cde27dcece01663dacc7d224996b36f5d791ae1963ce9b610a112"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2v_3_绿色小鸟转身.gif",
+      "source": "course_ep6/samples/gen_t2v_3_绿色小鸟转身.gif",
+      "source_sha256": "8ecf405712e43e17be11ea9c1e5d552745f8549f5a29f565e93a6b50d5c4ddf1",
+      "sha256": "8ecf405712e43e17be11ea9c1e5d552745f8549f5a29f565e93a6b50d5c4ddf1"
+    },
+    {
+      "file": "samples/course_ep6/gen_t2v_4_蓝色小熊向左跑.gif",
+      "source": "course_ep6/samples/gen_t2v_4_蓝色小熊向左跑.gif",
+      "source_sha256": "3af065b8d0769124369c6e31c1da85ed47f40ae2f56d4775faf946950b344680",
+      "sha256": "3af065b8d0769124369c6e31c1da85ed47f40ae2f56d4775faf946950b344680"
+    },
+    {
+      "file": "samples/course_ep6/i2t_0_模型说绿色小鸟.png",
+      "source": "course_ep6/samples/i2t_0_模型说绿色小鸟.png",
+      "source_sha256": "2933d3b29235d0c82896b5884a2ea2e240376d50515fc77c6633486048804758",
+      "sha256": "2933d3b29235d0c82896b5884a2ea2e240376d50515fc77c6633486048804758"
+    },
+    {
+      "file": "samples/course_ep6/i2t_1_模型说粉色小兔.png",
+      "source": "course_ep6/samples/i2t_1_模型说粉色小兔.png",
+      "source_sha256": "fd0886ae9fec3eb28961cd36fd3d82b8ac1bf82bb752051079598ec7e6b62c63",
+      "sha256": "fd0886ae9fec3eb28961cd36fd3d82b8ac1bf82bb752051079598ec7e6b62c63"
+    },
+    {
+      "file": "samples/course_ep6/i2t_2_模型说蓝色小熊.png",
+      "source": "course_ep6/samples/i2t_2_模型说蓝色小熊.png",
+      "source_sha256": "31ebb6b301a4da7718e7b005c3a68a22e594af9d6974f06f2bec61a3a31b9c54",
+      "sha256": "31ebb6b301a4da7718e7b005c3a68a22e594af9d6974f06f2bec61a3a31b9c54"
+    },
+    {
+      "file": "samples/course_ep6/i2t_3_模型说绿色小鱼.png",
+      "source": "course_ep6/samples/i2t_3_模型说绿色小鱼.png",
+      "source_sha256": "e12a4236022134a919d570f5c03076726012b86419caf7276556b67310498da4",
+      "sha256": "e12a4236022134a919d570f5c03076726012b86419caf7276556b67310498da4"
+    },
+    {
+      "file": "samples/course_ep6/i2t_4_模型说粉色小兔.png",
+      "source": "course_ep6/samples/i2t_4_模型说粉色小兔.png",
+      "source_sha256": "3fbdaa8e1b0c2f8a71b49cebb028a724329c7ad091f0b5de83442f21a2badad5",
+      "sha256": "3fbdaa8e1b0c2f8a71b49cebb028a724329c7ad091f0b5de83442f21a2badad5"
+    },
+    {
+      "file": "samples/course_ep6/v2t_0_模型说红色小狗转身.gif",
+      "source": "course_ep6/samples/v2t_0_模型说红色小狗转身.gif",
+      "source_sha256": "4b8c538d8257a71972bab398abd702352c66dfd9deb665aea2f47c149f16c70b",
+      "sha256": "4b8c538d8257a71972bab398abd702352c66dfd9deb665aea2f47c149f16c70b"
+    },
+    {
+      "file": "samples/course_ep6/v2t_1_模型说粉色小狗跳.gif",
+      "source": "course_ep6/samples/v2t_1_模型说粉色小狗跳.gif",
+      "source_sha256": "b93dda19ad929baa17b6aa1690002c369cd93b6a71f21403c79a782b3e9dcf2c",
+      "sha256": "b93dda19ad929baa17b6aa1690002c369cd93b6a71f21403c79a782b3e9dcf2c"
+    },
+    {
+      "file": "samples/course_ep6/v2t_2_模型说蓝色小狗转身.gif",
+      "source": "course_ep6/samples/v2t_2_模型说蓝色小狗转身.gif",
+      "source_sha256": "5266c07f2aaf1bc4b81de040167dea7d46e1b6b435be51eb58ee2bc7bb4df950",
+      "sha256": "5266c07f2aaf1bc4b81de040167dea7d46e1b6b435be51eb58ee2bc7bb4df950"
+    },
+    {
+      "file": "samples/lesson/frame0.png",
+      "source": "lesson/frame0.png",
+      "source_sha256": "03f00f52fbb580cc61e18de1a879b32be6e9eb48bcc8f17429e9f154c71de6cb",
+      "sha256": "03f00f52fbb580cc61e18de1a879b32be6e9eb48bcc8f17429e9f154c71de6cb"
+    },
+    {
+      "file": "samples/lesson/voice_cat.wav",
+      "source": "lesson/voice_cat.wav",
+      "source_sha256": "c7651acc23b5d2163ea4f8e2d6e193c2ae922a7618259929ea3db7958bc6ac19",
+      "sha256": "c7651acc23b5d2163ea4f8e2d6e193c2ae922a7618259929ea3db7958bc6ac19"
+    },
+    {
+      "file": "samples/lesson/anim.gif",
+      "source": "course_ep5/samples/gen_t2v_0_红色小猫向左跑.gif",
+      "source_sha256": "2fb30edde97328b9cd0992a9814d065a7af196354d8b5e5034d4047328872e95",
+      "sha256": "2fb30edde97328b9cd0992a9814d065a7af196354d8b5e5034d4047328872e95"
+    },
+    {
+      "file": "samples/lesson/answers.json",
+      "source": "lesson/materials_records.json",
+      "source_sha256": "0e2b5bd7928c3fbf8dbb3f61fded017348fa5a121acbf271eb29ca019c93c269",
+      "sha256": "cfbfa723e72c28e691ea1d084a65c604b6aa291c390ef5fb85048830dc05a993",
+      "change": "仅选主线三条与上一集看视频的一条；替换公开路径并保留原权重哈希"
+    }
+  ],
+  "verification": {
+    "ep6_source_vs_package": {
+      "model_tensors": 128,
+      "stat_tensors": 12,
+      "storages": 140,
+      "storage_bytes": 64185516
+    },
+    "ep5_actual_init_vs_public": {
+      "model_tensors": 128,
+      "stat_tensors": 6,
+      "storages": 134,
+      "storage_bytes": 64170156
+    },
+    "ep6_path_strings_replaced": 5
+  }
+}
