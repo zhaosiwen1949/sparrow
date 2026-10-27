@@ -17,6 +17,7 @@ tags:
 
 第 4 集（生声音）的配套代码、权重、训练录音与样例见 [`ep04-t2a/`](ep04-t2a/)。
 第 5 集（生视频）的配套代码、权重、训练命令与样例见 [`ep05-t2v/`](ep05-t2v/)。
+第 6 集（看图听声）的配套代码、主线权重、接续训练命令与实测回答见 [`ep06-understand/`](ep06-understand/)。
 模型仓库:https://modelscope.cn/models/llmzerotohero/sparrow
 
 ## 硬件

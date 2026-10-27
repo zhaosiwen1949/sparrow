@@ -1,0 +1,103 @@
+[
+  {
+    "ckpt": "weights/course_ep6/final.pt",
+    "task": "i2t",
+    "input": "samples/lesson/frame0.png",
+    "out": null,
+    "answer": [
+      "红色",
+      "小猫",
+      "<eos>"
+    ],
+    "source_ckpt_sha256": "b03590c6b843c7101a6cd165fd7db1f1a5cfb3d0aaa94750f5c68dbba0f9c8b3",
+    "ckpt_sha256": "a91e9add8bb85dc06d3631ad958447c9b0baa64d7d029b49c073a2ec43043ccb",
+    "input_sha256": "03f00f52fbb580cc61e18de1a879b32be6e9eb48bcc8f17429e9f154c71de6cb"
+  },
+  {
+    "ckpt": "weights/course_ep6/final.pt",
+    "task": "a2t",
+    "input": "samples/lesson/voice_cat.wav",
+    "out": null,
+    "answer": [
+      "小猫",
+      "<eos>"
+    ],
+    "source_ckpt_sha256": "b03590c6b843c7101a6cd165fd7db1f1a5cfb3d0aaa94750f5c68dbba0f9c8b3",
+    "ckpt_sha256": "a91e9add8bb85dc06d3631ad958447c9b0baa64d7d029b49c073a2ec43043ccb",
+    "input_sha256": "c7651acc23b5d2163ea4f8e2d6e193c2ae922a7618259929ea3db7958bc6ac19"
+  },
+  {
+    "ckpt": "weights/course_ep6/final.pt",
+    "task": "v2t",
+    "input": "samples/lesson/anim.gif",
+    "out": null,
+    "watch_frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "answer": [
+      "红色",
+      "小猫",
+      "向左跑",
+      "<eos>"
+    ],
+    "source_ckpt_sha256": "b03590c6b843c7101a6cd165fd7db1f1a5cfb3d0aaa94750f5c68dbba0f9c8b3",
+    "ckpt_sha256": "a91e9add8bb85dc06d3631ad958447c9b0baa64d7d029b49c073a2ec43043ccb",
+    "input_sha256": "2fb30edde97328b9cd0992a9814d065a7af196354d8b5e5034d4047328872e95"
+  },
+  {
+    "ckpt": "../ep05-t2v/weights/course_ep5/final.pt",
+    "task": "v2t",
+    "input": "samples/lesson/anim.gif",
+    "out": null,
+    "stat_from": {
+      "ckpt": "weights/course_ep6/final.pt",
+      "mods": [
+        "watch"
+      ],
+      "source_ckpt_sha256": "b03590c6b843c7101a6cd165fd7db1f1a5cfb3d0aaa94750f5c68dbba0f9c8b3",
+      "ckpt_sha256": "a91e9add8bb85dc06d3631ad958447c9b0baa64d7d029b49c073a2ec43043ccb"
+    },
+    "watch_frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "answer": [
+      "<vid>",
+      "小兔",
+      "向右跑",
+      "跳"
+    ],
+    "source_ckpt_sha256": "b7f6efea0fac0a8c8b7dfc337ff03ddf5952d348ee3f9177e7e9f4ce396ce1ae",
+    "ckpt_sha256": "2fdfa161614d2703cfc4b353b047df62bbcdd9d9c65f07cf233013123d41cbae",
+    "input_sha256": "2fb30edde97328b9cd0992a9814d065a7af196354d8b5e5034d4047328872e95"
+  }
+]
