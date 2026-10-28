@@ -18,6 +18,16 @@
             "options": { "cwd": "${workspaceFolder}/ep04-t2a/code" },
             "command": "mkdir -p ../work/data ../work/judges ../work/runs && cp ../data/voice.npz ../work/data/voice.npz",
             "problemMatcher": []
+        },
+        {
+            // ep05-t2v/README.md 第 2 节开头的 mkdir、curl 与校验:从 ModelScope 下载第 4 集主线参数和已把关的录音包
+            // 不用 ep04-t2a/ 下的同名文件,它们在本地可能是 Git LFS 指针;已下载过(文件非空)就不再下载
+            // README 用 sha256sum,这里换成 macOS 与 Linux 都有的 shasum -a 256
+            "label": "ep05: 准备工作目录与第 4 集参数",
+            "type": "shell",
+            "options": { "cwd": "${workspaceFolder}/ep05-t2v/code" },
+            "command": "mkdir -p ../work/init ../work/data ../work/judges ../work/runs && BASE=https://modelscope.cn/models/llmzerotohero/sparrow/resolve/master && { [ -s ../work/init/course_ep4.pt ] || curl -fL \"$BASE/ep04-t2a/weights/course_ep4/final.pt\" -o ../work/init/course_ep4.pt; } && { [ -s ../work/data/voice.npz ] || curl -fL \"$BASE/ep04-t2a/data/voice.npz\" -o ../work/data/voice.npz; } && printf '%s  %s\\n' 2b7dfe25ed142c041bebba02ea112b22cfaf97155917bf89a0c3ce5b647d8d8c ../work/init/course_ep4.pt e3fb4fcb76cd456db9bfd38aa3ad4287c22a913a085f07a90b0f7be33297a634 ../work/data/voice.npz | shasum -a 256 -c -",
+            "problemMatcher": []
         }
     ]
 }

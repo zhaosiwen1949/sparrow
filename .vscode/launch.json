@@ -307,6 +307,234 @@
                 "--eval_every", "1000"
             ],
             "console": "integratedTerminal"
+        },
+        // ---------------------------------------------------------------------------
+        // ep05-t2v/README.md「2. 照着训练」「3. 用本集参数生成动画」「4. 可选」「5. 训练进度」与 ep05-t2v/EXPERIMENTS.md 里的 python 命令
+        // 都在 ep05-t2v/code 下执行,工作目录 W=../work(即 ep05-t2v/work),INIT=../work/init/course_ep4.pt
+        // 首次运行前先执行任务「ep05: 准备工作目录与第 4 集参数」(①a 已挂上):它从 ModelScope 下载第 4 集主线参数与 voice.npz 并核对 sha256
+        // 本集的 ../weights/course_ep5*/final.pt 在本地是真实文件,⑥、⑦ 和重评可以直接用
+        // sparrow.py 的 --out 必须是新目录(fresh_out):重跑前先删掉旧的运行目录
+        // ---------------------------------------------------------------------------
+        {
+            "name": "ep05 ①a 造数据:测试集",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "data.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": ["world", "../work/data/world_test.npz", "2000", "500", "900000000"],
+            "console": "integratedTerminal",
+            "preLaunchTask": "ep05: 准备工作目录与第 4 集参数"
+        },
+        {
+            "name": "ep05 ①b 造数据:训练集",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "data.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": ["world", "../work/data/world_train.npz", "60000", "10000", "0"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 ③a 判卷模型:图",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "train_judges.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": ["img", "--data", "../work/data", "--out", "../work/judges", "--steps", "2000"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 ③b 判卷模型:动画",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "train_judges.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": ["vid", "--data", "../work/data", "--out", "../work/judges", "--steps", "1500"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 ④ 编码(img,aud,vid)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "encode.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": ["--data", "../work/data", "--judges", "../work/judges", "--out", "../work/cache", "--parts", "img,aud,vid"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 ⑤ 主线训练(course_ep5)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/course_ep5",
+                "--init", "../work/init/course_ep4.pt",
+                "--tasks", "t2i,t2a,t2v",
+                "--steps", "4000",
+                "--seed", "0",
+                "--rng", "legacy",
+                "--vid_attn", "full",
+                "--eval_every", "0"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 ⑥ 演动画(t2v)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "infer.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": ["${input:ep05Ckpt}", "t2v", "${input:ep05Prompt}", "../work/t2v.gif"],
+            "console": "integratedTerminal"
+        },
+        {
+            // --out 必须是新目录,所以单独起名 eval_<名字>
+            "name": "ep05 ⑦ 判卷(eval_only)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/eval_${input:ep05EvalName}",
+                "--eval_only",
+                "--ckpt", "${input:ep05Ckpt}"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 对照 · 只看自己版训练(course_ep5_frame)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/course_ep5_frame",
+                "--init", "../work/init/course_ep4.pt",
+                "--tasks", "t2i,t2a,t2v",
+                "--steps", "4000",
+                "--seed", "0",
+                "--rng", "legacy",
+                "--vid_attn", "frame",
+                "--eval_every", "0"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 对照 · 统一口径重评:互看(attention_full)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/attention_full",
+                "--eval_only",
+                "--ckpt", "../weights/course_ep5/final.pt",
+                "--eval_tasks", "t2v",
+                "--eval_seed", "0"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 对照 · 统一口径重评:只看自己(attention_frame)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/attention_frame",
+                "--eval_only",
+                "--ckpt", "../weights/course_ep5_frame/final.pt",
+                "--eval_tasks", "t2v",
+                "--eval_seed", "0"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 对照 · 训练进度曲线(progress)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/progress",
+                "--init", "../work/init/course_ep4.pt",
+                "--tasks", "t2i,t2a,t2v",
+                "--steps", "4000",
+                "--seed", "0",
+                "--rng", "paired",
+                "--eval_every", "250",
+                "--eval_tasks", "t2v"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 对照 · 编码 vidimg(逐帧 FLUX.2)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "encode.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": ["--data", "../work/data", "--judges", "../work/judges", "--out", "../work/cache", "--parts", "vidimg"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "ep05 对照 · 视频表示:Wan 时空 VAE(representation_wan)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/representation_wan",
+                "--tasks", "t2v",
+                "--steps", "4000",
+                "--seed", "0",
+                "--rng", "paired",
+                "--maxlen", "1040",
+                "--vid_lat", "vid"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            // 训练张量显存峰值约 16 GB,远高于主线的 7.06 GB
+            "name": "ep05 对照 · 视频表示:逐帧 FLUX.2(representation_framevae)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sparrow.py",
+            "cwd": "${workspaceFolder}/ep05-t2v/code",
+            "args": [
+                "--data", "../work/data",
+                "--cache", "../work/cache",
+                "--judges", "../work/judges",
+                "--out", "../work/runs/representation_framevae",
+                "--tasks", "t2v",
+                "--steps", "4000",
+                "--seed", "0",
+                "--rng", "paired",
+                "--maxlen", "1040",
+                "--vid_lat", "vidimg"
+            ],
+            "console": "integratedTerminal"
         }
     ],
     "inputs": [
@@ -355,6 +583,30 @@
             "description": "每轮带几道画图题(念名字题每轮仍为 512 条)",
             "options": ["10", "26", "51", "128", "256", "512"],
             "default": "10"
+        },
+        {
+            "id": "ep05Prompt",
+            "type": "promptString",
+            "description": "颜色 + 动物 + 动作。颜色:红色 橙色 黄色 绿色 蓝色 紫色 粉色 棕色;动物:小猫 小狗 小兔 小鸟 小鱼 小熊;动作:向左跑 向右跑 跳 转身",
+            "default": "红色 小猫 向左跑"
+        },
+        {
+            "id": "ep05Ckpt",
+            "type": "pickString",
+            "description": "用哪份权重(../weights/ 为本集发布参数,../work/runs/ 下为自己训的)",
+            "options": [
+                "../weights/course_ep5/final.pt",
+                "../weights/course_ep5_frame/final.pt",
+                "../work/runs/course_ep5/final.pt",
+                "../work/runs/course_ep5_frame/final.pt"
+            ],
+            "default": "../weights/course_ep5/final.pt"
+        },
+        {
+            "id": "ep05EvalName",
+            "type": "promptString",
+            "description": "⑦ 评测输出目录名,写到 ../work/runs/eval_<这个名字>;须是没用过的新名字",
+            "default": "course_ep5"
         }
     ]
 }
